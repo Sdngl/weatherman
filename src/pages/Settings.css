@@ -1,0 +1,97 @@
+/* ===== Settings Container ===== */
+.settings-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 40px 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2937;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.settings-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Headings ===== */
+.settings-container h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Sections ===== */
+.settings-section {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ===== Feature Button (Toggle Unit / Save City) ===== */
+.feature-card {
+    background: linear-gradient(135deg, #4f46e5, #2563eb);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 25px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover {
+    background: linear-gradient(135deg, #3b40c7, #1d4ed8);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.3);
+}
+
+.feature-card:active {
+    transform: scale(0.97);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+/* ===== Select Dropdown ===== */
+.city-select {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1f2937;
+    background: #f9fafb;
+    width: 100%;
+    max-width: 300px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.city-select:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* ===== Responsive Styling ===== */
+@media (max-width: 768px) {
+    .settings-container {
+        padding: 30px 25px;
+        margin: 30px 15px;
+    }
+
+    .feature-card {
+        width: 100%;
+        text-align: center;
+    }
+
+    .city-select {
+        max-width: 100%;
+    }
+}

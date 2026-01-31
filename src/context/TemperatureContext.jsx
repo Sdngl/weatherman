@@ -1,21 +1,20 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const TemperatureContext = createContext();
 
 export default function TemperatureProvider({ children }) {
-
-  const [unit, setUnit] = useState(() => {
-    const savedUnit = localStorage.getItem("tempUnit");
-    return savedUnit ? savedUnit : "C";
-  });
-
-  const toggleUnit = () => {
-    setUnit(prev => (prev === "C" ? "F" : "C"));
-  };
+  const [unit, setUnit] = useState("C");
 
   useEffect(() => {
-    localStorage.setItem("tempUnit", unit);
-  }, [unit]);
+    const savedUnit = localStorage.getItem("tempUnit");
+    if (savedUnit) setUnit(savedUnit);
+  }, []);
+
+  const toggleUnit = () => {
+    const newUnit = unit === "C" ? "F" : "C";
+    setUnit(newUnit);
+    localStorage.setItem("tempUnit", newUnit);
+  };
 
   return (
     <TemperatureContext.Provider value={{ unit, toggleUnit }}>
@@ -23,4 +22,3 @@ export default function TemperatureProvider({ children }) {
     </TemperatureContext.Provider>
   );
 }
-export { TemperatureProvider };
