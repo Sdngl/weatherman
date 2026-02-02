@@ -1,0 +1,122 @@
+/* Page wrapper for background */
+.login-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Form container */
+.login-container {
+    background-color: #ffffff;
+    padding: 40px 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+/* Heading */
+.login-container h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Inputs */
+.login-container input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.login-container input:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+    outline: none;
+}
+
+/* Error messages */
+.login-container p {
+    margin: 5px 0 0;
+    font-size: 0.85rem;
+    color: #ff4d4f;
+    text-align: left;
+}
+
+/* Buttons */
+.login-container button {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #2575fc;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-container button:hover {
+    background: #1a5edb;
+    transform: translateY(-2px);
+}
+
+/* Google sign-in button */
+.login-container button:last-of-type {
+    background: #db4437;
+    margin-top: 10px;
+}
+
+.login-container button:last-of-type:hover {
+    background: #c13527;
+}
+
+/* Links */
+.login-container a {
+    color: #2575fc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* Divider line */
+.login-container hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+    }
+}

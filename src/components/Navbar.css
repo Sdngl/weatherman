@@ -7,7 +7,6 @@
     align-items: center;
     padding: 14px 30px;
     background: linear-gradient(90deg, #111827, #1f2937);
-    /* subtle gradient */
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     z-index: 100;
@@ -19,8 +18,8 @@
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: 1px;
-    color: #fff;
     text-transform: uppercase;
+    color: #fff;
     transition: 0.2s;
 }
 
@@ -52,6 +51,12 @@
 }
 
 /* Right section: temperature unit button */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .navbar-right .unit-btn {
     color: #ffffff;
     background-color: #2563eb;
@@ -68,8 +73,34 @@
 .navbar-right .unit-btn:hover {
     background-color: #1d4ed8;
     transform: translateY(-2px);
-    /* subtle lift on hover */
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Logout button */
+.logout-btn {
+    color: #ffffff;
+    background-color: #ef4444;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: 0.25s;
+}
+
+.logout-btn:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* User name display */
+.user-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-right: 10px;
 }
 
 /* Responsive tweaks */
@@ -94,7 +125,6 @@
 
     .navbar-right {
         width: 100%;
-        display: flex;
         justify-content: flex-end;
     }
 }
