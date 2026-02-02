@@ -1,121 +1,121 @@
-/* Page wrapper for background */
+/* Page wrapper */
 .login-page {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: white;
+    background: #ffffff;
     font-family: 'Poppins', sans-serif;
 }
 
-/* Form container */
+/* Card */
 .login-container {
-    background-color: #ffffff;
-    padding: 40px 35px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 400px;
+    padding: 40px 35px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     text-align: center;
-    animation: fadeIn 0.7s ease-in-out;
 }
 
 /* Heading */
 .login-container h2 {
     margin-bottom: 25px;
-    color: #333;
     font-size: 1.8rem;
-    font-weight: 600;
+    color: #333;
+}
+
+/* Form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Input field wrapper */
+.field {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Inputs */
-.login-container input {
-    width: 100%;
+.field input {
     padding: 12px 15px;
-    margin: 10px 0;
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 1rem;
-    transition: all 0.3s ease;
 }
 
-.login-container input:focus {
-    border-color: #2575fc;
-    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+.field input:focus {
     outline: none;
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.4);
 }
 
-/* Error messages */
-.login-container p {
-    margin: 5px 0 0;
+/* Error (reserved space = no layout jump) */
+.error {
+    min-height: 18px;
     font-size: 0.85rem;
     color: #ff4d4f;
     text-align: left;
+    margin-top: 4px;
 }
 
 /* Buttons */
-.login-container button {
-    width: 100%;
-    padding: 12px 15px;
-    margin-top: 15px;
-    border: none;
+.primary-btn {
+    margin-top: 10px;
+    padding: 12px;
     border-radius: 8px;
+    border: none;
     background: #2575fc;
     color: #fff;
     font-size: 1rem;
-    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.login-container button:hover {
+.primary-btn:hover {
     background: #1a5edb;
-    transform: translateY(-2px);
 }
 
-/* Google sign-in button */
-.login-container button:last-of-type {
+/* Register text */
+.auth-link {
+    margin: 18px 0 10px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.auth-link a {
+    color: #2575fc;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* Divider */
+.divider {
+    height: 1px;
+    background: #eee;
+    margin: 18px 0;
+}
+
+/* Google button */
+.google-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
     background: #db4437;
-    margin-top: 10px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
-.login-container button:last-of-type:hover {
+.google-btn:hover {
     background: #c13527;
 }
 
-/* Links */
-.login-container a {
-    color: #2575fc;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.login-container a:hover {
-    text-decoration: underline;
-}
-
-/* Divider line */
-.login-container hr {
-    margin: 20px 0;
-    border: 0;
-    border-top: 1px solid #eee;
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive */
-@media screen and (max-width: 480px) {
+/* Mobile */
+@media (max-width: 480px) {
     .login-container {
         padding: 30px 20px;
     }

@@ -13,7 +13,7 @@ export default function Register() {
   const navigate = useNavigate();
 
   const {
-    register: formRegister,
+    register,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -50,52 +50,60 @@ export default function Register() {
       <div className="register-container">
         <h2>Register</h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="register-form">
-          <input
-            type="text"
-            placeholder="Name"
-            {...formRegister("name", {
-              required: "Name is required",
-              minLength: { value: 2, message: "Name must be at least 2 characters" },
-            })}
-          />
-          {errors.name && <p className="error">{errors.name.message}</p>}
+        <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="field">
+            <input
+              type="text"
+              placeholder="Name"
+              {...register("name", {
+                required: "Name is required",
+                minLength: { value: 2, message: "Minimum 2 characters" },
+              })}
+            />
+            <span className="error">{errors.name?.message || ""}</span>
+          </div>
 
-          <input
-            type="email"
-            placeholder="Email"
-            {...formRegister("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Invalid email address",
-              },
-            })}
-          />
-          {errors.email && <p className="error">{errors.email.message}</p>}
+          <div className="field">
+            <input
+              type="email"
+              placeholder="Email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Invalid email address",
+                },
+              })}
+            />
+            <span className="error">{errors.email?.message || ""}</span>
+          </div>
 
-          <input
-            type="password"
-            placeholder="Password"
-            {...formRegister("password", {
-              required: "Password is required",
-              minLength: { value: 6, message: "Password must be at least 6 characters" },
-              pattern: {
-                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-                message: "Password must contain letters and numbers",
-              },
-            })}
-          />
-          {errors.password && <p className="error">{errors.password.message}</p>}
+          <div className="field">
+            <input
+              type="password"
+              placeholder="Password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: { value: 6, message: "Minimum 6 characters" },
+                pattern: {
+                  value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+                  message: "Must contain letters & numbers",
+                },
+              })}
+            />
+            <span className="error">{errors.password?.message || ""}</span>
+          </div>
 
-          <button type="submit">Register</button>
+          <button type="submit" className="primary-btn">
+            Register
+          </button>
         </form>
 
         <p className="login-link">
           Already have an account? <Link to="/login">Login</Link>
         </p>
 
-        <hr />
+        <div className="divider" />
 
         <button className="google-btn" onClick={handleGoogleSignIn}>
           Sign in with Google
