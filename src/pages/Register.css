@@ -53,7 +53,7 @@
     box-shadow: 0 0 5px rgba(37, 117, 252, 0.4);
 }
 
-/* Error text (reserved height = no jump) */
+/* Error text */
 .error {
     min-height: 18px;
     font-size: 0.85rem;
@@ -116,6 +116,23 @@
 
 .google-btn:hover {
     background: #c13527;
+}
+
+/* Facebook button */
+.facebook-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #1877f2;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.facebook-btn:hover {
+    background: #145ddb;
 }
 
 /* Responsive */

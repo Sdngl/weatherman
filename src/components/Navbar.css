@@ -11,6 +11,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     z-index: 100;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
 
 /* Brand / Logo */
@@ -39,9 +40,9 @@
     color: #ffffff;
     font-weight: 500;
     font-size: 1rem;
-    padding: 6px 10px;
-    border-radius: 6px;
-    transition: 0.25s;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
     text-decoration: none;
 }
 
@@ -50,14 +51,15 @@
     background-color: rgba(37, 99, 235, 0.1);
 }
 
-/* Right section: temperature unit button */
+/* Right section */
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-.navbar-right .unit-btn {
+/* Temperature button */
+.unit-btn {
     color: #ffffff;
     background-color: #2563eb;
     padding: 8px 16px;
@@ -67,10 +69,10 @@
     font-size: 0.95rem;
     cursor: pointer;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    transition: 0.25s;
+    transition: all 0.25s ease;
 }
 
-.navbar-right .unit-btn:hover {
+.unit-btn:hover {
     background-color: #1d4ed8;
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
@@ -87,7 +89,7 @@
     font-size: 0.95rem;
     cursor: pointer;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    transition: 0.25s;
+    transition: all 0.25s ease;
 }
 
 .logout-btn:hover {
@@ -96,11 +98,35 @@
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* User name display */
+/* User info container */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+/* Avatar image */
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    transition: transform 0.25s ease;
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+}
+
+/* Username */
 .user-name {
     font-weight: 500;
     font-size: 0.95rem;
-    margin-right: 10px;
+    color: #ffffff;
 }
 
 /* Responsive tweaks */
@@ -126,5 +152,18 @@
     .navbar-right {
         width: 100%;
         justify-content: flex-end;
+        gap: 8px;
+        flex-wrap: wrap;
     }
+
+    .user-name {
+        display: none;
+        /* hide name on mobile to save space */
+    }
+}
+
+/* Optional: small hover effect for user-info container */
+.user-info:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
 }

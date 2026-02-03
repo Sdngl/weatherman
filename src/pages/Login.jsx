@@ -1,22 +1,30 @@
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { auth, googleProvider } from "../services/firebase";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import Cookies from "js-cookie";
+import { auth, googleProvider, facebookProvider } from "../services/firebase";
+import { signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import "./Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      if (currentUser) navigate("/"); // redirect if logged in
+    });
+    return () => unsubscribe();
+  }, [navigate]);
 
   const onSubmit = async (data) => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
-      navigate("/home");
+      Cookies.set("isLoggedIn", "true", { expires: 7 });
+      navigate("/");
     } catch (err) {
       alert(err.message);
     }
@@ -25,55 +33,41 @@ export default function Login() {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate("/home");
+      Cookies.set("isLoggedIn", "true", { expires: 7 });
+      navigate("/");
     } catch (err) {
       alert(err.message);
     }
   };
 
+  const handleFacebookSignIn = async () => {
+    try {
+      await signInWithPopup(auth, facebookProvider);
+      Cookies.set("isLoggedIn", "true", { expires: 7 });
+      navigate("/");
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  if (user) return null; // hide login form if already logged in
+
   return (
     <div className="login-page">
       <div className="login-container">
         <h2>Login</h2>
-
-        <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="field">
-            <input
-              type="email"
-              placeholder="Email"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Invalid email address",
-                },
-              })}
-            />
-            <span className="error">
-              {errors.email?.message || ""}
-            </span>
+            <input type="email" placeholder="Email" {...register("email", { required: "Email is required" })} />
+            <span className="error">{errors.email?.message}</span>
           </div>
 
           <div className="field">
-            <input
-              type="password"
-              placeholder="Password"
-              {...register("password", {
-                required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Minimum 6 characters",
-                },
-              })}
-            />
-            <span className="error">
-              {errors.password?.message || ""}
-            </span>
+            <input type="password" placeholder="Password" {...register("password", { required: "Password is required" })} />
+            <span className="error">{errors.password?.message}</span>
           </div>
 
-          <button type="submit" className="primary-btn">
-            Login
-          </button>
+          <button type="submit" className="primary-btn">Login</button>
         </form>
 
         <p className="auth-link">
@@ -82,9 +76,8 @@ export default function Login() {
 
         <div className="divider" />
 
-        <button className="google-btn" onClick={handleGoogleSignIn}>
-          Sign in with Google
-        </button>
+        <button className="google-btn" onClick={handleGoogleSignIn}>Sign in with Google</button>
+        <button className="facebook-btn" onClick={handleFacebookSignIn}>Sign in with Facebook</button>
       </div>
     </div>
   );

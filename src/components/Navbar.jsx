@@ -1,61 +1,67 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css";
-import { TemperatureContext } from "../context/TemperatureContext";
+import Cookies from "js-cookie";
 import { auth } from "../services/firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { TemperatureContext } from "../context/TemperatureContext";
+import "./Navbar.css";
 
 export default function Navbar() {
   const { unit, toggleUnit } = useContext(TemperatureContext);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  // Detect login state
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-
-    return () => unsub();
+    return () => unsubscribe();
   }, []);
 
   const handleLogout = async () => {
     await signOut(auth);
+    Cookies.remove("isLoggedIn");
     navigate("/login");
   };
+
+  // Default avatar URL (classic "no face" placeholder)
+  const defaultAvatar =
+    "https://www.gravatar.com/avatar/?d=mp&s=200"; // Gravatar "mystery person" image
 
   return (
     <nav className="navbar">
       {/* Left: Brand */}
       <div className="navbar-left">
-        <div className="brand">Weather Dashboard</div>
+        <span className="brand">Weather Dashboard</span>
       </div>
 
-      {/* Center: Links */}
+      {/* Center links */}
       <div className="navbar-center">
         <Link to="/" className="nav-link">Home</Link>
-        <Link to="/cities" className="nav-link">Cities</Link>
-        <Link to="/settings" className="nav-link">Settings</Link>
+        {user && (
+          <>
+            <Link to="/cities" className="nav-link">Cities</Link>
+            <Link to="/settings" className="nav-link">Settings</Link>
+          </>
+        )}
       </div>
 
-      {/* Right: Controls */}
+      {/* Right section */}
       <div className="navbar-right">
+        <button className="unit-btn" onClick={toggleUnit}>{unit}°</button>
 
-        {/* Temperature Toggle */}
-        <button className="unit-btn" onClick={toggleUnit}>
-          {unit}°
-        </button>
-
-        {/* Auth Controls */}
         {user ? (
-          <>
-            <span className="user-name">
-              {user.displayName || user.email}
-            </span>
+          <div className="user-info">
+            <img
+              src={user.photoURL || defaultAvatar}
+              alt="Profile"
+              className="user-avatar"
+            />
+            <span className="user-name">{user.displayName || user.email}</span>
             <button className="logout-btn" onClick={handleLogout}>
               Logout
             </button>
-          </>
+          </div>
         ) : (
           <>
             <Link to="/login" className="nav-link">Login</Link>

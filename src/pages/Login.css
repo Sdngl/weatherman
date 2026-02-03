@@ -1,4 +1,6 @@
-/* Page wrapper */
+/* ============================= */
+/* Page Wrapper */
+/* ============================= */
 .login-page {
     height: 100vh;
     display: flex;
@@ -8,7 +10,9 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* ============================= */
 /* Card */
+/* ============================= */
 .login-container {
     width: 100%;
     max-width: 400px;
@@ -19,21 +23,25 @@
     text-align: center;
 }
 
+/* ============================= */
 /* Heading */
+/* ============================= */
 .login-container h2 {
     margin-bottom: 25px;
     font-size: 1.8rem;
     color: #333;
 }
 
+/* ============================= */
 /* Form */
+/* ============================= */
 .login-form {
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
 
-/* Input field wrapper */
+/* Input wrapper */
 .field {
     display: flex;
     flex-direction: column;
@@ -53,7 +61,7 @@
     box-shadow: 0 0 5px rgba(37, 117, 252, 0.4);
 }
 
-/* Error (reserved space = no layout jump) */
+/* Error text */
 .error {
     min-height: 18px;
     font-size: 0.85rem;
@@ -62,7 +70,7 @@
     margin-top: 4px;
 }
 
-/* Buttons */
+/* Primary button */
 .primary-btn {
     margin-top: 10px;
     padding: 12px;
@@ -72,13 +80,14 @@
     color: #fff;
     font-size: 1rem;
     cursor: pointer;
+    transition: background 0.2s ease;
 }
 
 .primary-btn:hover {
     background: #1a5edb;
 }
 
-/* Register text */
+/* Register link */
 .auth-link {
     margin: 18px 0 10px;
     font-size: 0.9rem;
@@ -91,6 +100,10 @@
     text-decoration: none;
 }
 
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
 /* Divider */
 .divider {
     height: 1px;
@@ -98,25 +111,70 @@
     margin: 18px 0;
 }
 
-/* Google button */
-.google-btn {
+/* ============================= */
+/* Social Auth Buttons */
+/* ============================= */
+.google-btn,
+.facebook-btn {
     width: 100%;
-    padding: 12px;
+    padding: 12px 14px;
     border-radius: 8px;
     border: none;
-    background: #db4437;
-    color: #fff;
     font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Icon inside buttons */
+.google-btn img,
+.facebook-btn img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Google Button (Official Style) */
+.google-btn {
+    background-color: #ffffff;
+    color: #4285F4;
+    border: 1px solid #dadce0;
 }
 
 .google-btn:hover {
-    background: #c13527;
+    background-color: #f7f8f8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
-/* Mobile */
+/* Facebook Button (Official Style) */
+.facebook-btn {
+    margin-top: 10px;
+    background-color: #1877F2;
+    color: #ffffff;
+}
+
+.facebook-btn:hover {
+    background-color: #145ddb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================= */
+/* Mobile Responsiveness */
+/* ============================= */
 @media (max-width: 480px) {
     .login-container {
         padding: 30px 20px;
+    }
+
+    .google-btn,
+    .facebook-btn {
+        font-size: 0.95rem;
+        padding: 11px;
     }
 }
