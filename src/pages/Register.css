@@ -1,143 +1,231 @@
 /* Page wrapper */
 .register-page {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f9f9f9;
-    font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--gray-50);
+  font-family: var(--font-family);
+  padding: 24px;
 }
 
 /* Card */
 .register-container {
-    width: 100%;
-    max-width: 400px;
-    padding: 40px 35px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    text-align: center;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+  text-align: center;
 }
 
 /* Heading */
 .register-container h2 {
-    margin-bottom: 25px;
-    font-size: 1.8rem;
-    color: #333;
+  margin-bottom: 8px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  letter-spacing: -0.5px;
+}
+
+.register-subtitle {
+  color: var(--gray-500);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
 }
 
 /* Form */
 .register-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Input wrapper */
 .field {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-700);
+  text-align: left;
 }
 
 /* Inputs */
 .field input {
-    padding: 12px 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-300);
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
 }
 
 .field input:focus {
-    outline: none;
-    border-color: #2575fc;
-    box-shadow: 0 0 5px rgba(37, 117, 252, 0.4);
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.field input::placeholder {
+  color: var(--gray-400);
 }
 
 /* Error text */
 .error {
-    min-height: 18px;
-    font-size: 0.85rem;
-    color: #ff4d4f;
-    text-align: left;
-    margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--danger);
+  text-align: left;
+  margin-top: 4px;
 }
 
 /* Primary button */
 .primary-btn {
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background: #2575fc;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
+  margin-top: 8px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--primary-600);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .primary-btn:hover {
-    background: #1a5edb;
+  background: var(--primary-700);
+  transform: translateY(-1px);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
 }
 
 /* Login link */
 .login-link {
-    margin: 18px 0 10px;
-    font-size: 0.95rem;
-    color: #333;
+  margin: 24px 0 16px;
+  font-size: 0.9rem;
+  color: var(--gray-600);
 }
 
 .login-link a {
-    color: #2575fc;
-    font-weight: 500;
-    text-decoration: none;
+  color: var(--primary-600);
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .login-link a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Divider */
 .divider {
-    height: 1px;
-    background: #eee;
-    margin: 18px 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0;
 }
 
-/* Google button */
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gray-200);
+}
+
+.divider span {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Social buttons */
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.google-btn,
+.facebook-btn {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-300);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all var(--transition-fast);
+  background: white;
+}
+
+/* Google Button */
 .google-btn {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background: #db4437;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
+  color: var(--gray-700);
 }
 
 .google-btn:hover {
-    background: #c13527;
+  background: var(--gray-50);
+  border-color: var(--gray-400);
 }
 
-/* Facebook button */
+/* Facebook Button */
 .facebook-btn {
-    width: 100%;
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background: #1877f2;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
+  background: #1877f2;
+  color: white;
+  border: none;
 }
 
 .facebook-btn:hover {
-    background: #145ddb;
+  background: #145ddb;
+  box-shadow: var(--shadow-md);
+}
+
+/* Icon inside buttons */
+.social-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Terms */
+.terms {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.terms a {
+  color: var(--primary-600);
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
 }
 
 /* Responsive */
 @media (max-width: 480px) {
-    .register-container {
-        padding: 30px 20px;
-    }
+  .register-container {
+    padding: 32px 24px;
+  }
+
+  .google-btn,
+  .facebook-btn {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
 }

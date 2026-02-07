@@ -1,169 +1,177 @@
 /* Navbar container */
 .navbar {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 30px;
-    background: linear-gradient(90deg, #111827, #1f2937);
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    z-index: 100;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+  background: white;
+  color: var(--gray-800);
+  font-family: var(--font-family);
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--gray-200);
+  transition: all var(--transition-normal);
 }
 
 /* Brand / Logo */
 .navbar-left .brand {
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #fff;
-    transition: 0.2s;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--gray-900);
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .navbar-left .brand:hover {
-    color: #2563eb;
-    cursor: pointer;
-    transform: scale(1.05);
+  color: var(--primary-600);
+  cursor: pointer;
 }
 
 /* Center links */
 .navbar-center {
-    display: flex;
-    gap: 24px;
+  display: flex;
+  gap: 8px;
 }
 
 .nav-link {
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 1rem;
-    padding: 6px 12px;
-    border-radius: 8px;
-    transition: all 0.25s ease;
-    text-decoration: none;
+  color: var(--gray-600);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  position: relative;
 }
 
 .nav-link:hover {
-    color: #2563eb;
-    background-color: rgba(37, 99, 235, 0.1);
+  color: var(--primary-600);
+  background-color: var(--primary-50);
+}
+
+/* Active link state */
+.nav-link.active {
+  color: var(--primary-600);
+  background-color: var(--primary-50);
 }
 
 /* Right section */
 .navbar-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 /* Temperature button */
 .unit-btn {
-    color: #ffffff;
-    background-color: #2563eb;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.25s ease;
+  color: var(--gray-700);
+  background-color: var(--gray-100);
+  padding: 8px 14px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .unit-btn:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+  background-color: var(--gray-200);
+  border-color: var(--gray-300);
 }
 
 /* Logout button */
 .logout-btn {
-    color: #ffffff;
-    background-color: #ef4444;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.25s ease;
+  color: var(--gray-600);
+  background-color: transparent;
+  padding: 8px 14px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .logout-btn:hover {
-    background-color: #dc2626;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+  color: var(--danger);
+  background-color: #fef2f2;
+  border-color: var(--danger);
 }
 
 /* User info container */
 .user-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 4px 8px;
-    border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--gray-50);
+  padding: 6px 12px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
 }
 
 /* Avatar image */
 .user-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid #ccc;
-    transition: transform 0.25s ease;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gray-200);
+  transition: transform var(--transition-fast);
 }
 
 .user-avatar:hover {
-    transform: scale(1.1);
+  transform: scale(1.05);
+  border-color: var(--primary-400);
 }
 
 /* Username */
 .user-name {
-    font-weight: 500;
-    font-size: 0.95rem;
-    color: #ffffff;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--gray-700);
 }
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 12px 20px;
-        gap: 10px;
-    }
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 16px;
+    gap: 12px;
+  }
 
-    .navbar-center {
-        flex-direction: column;
-        width: 100%;
-    }
+  .navbar-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .nav-link {
-        width: 100%;
-        text-align: left;
-        padding: 8px 12px;
-    }
+  .navbar-center {
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+  }
 
-    .navbar-right {
-        width: 100%;
-        justify-content: flex-end;
-        gap: 8px;
-        flex-wrap: wrap;
-    }
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 12px 16px;
+  }
 
-    .user-name {
-        display: none;
-        /* hide name on mobile to save space */
-    }
-}
+  .navbar-right {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
 
-/* Optional: small hover effect for user-info container */
-.user-info:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-1px);
+  .user-name {
+    display: none;
+  }
 }
